@@ -51,6 +51,6 @@ WHERE category = "Kitchen Supplies";
 
 -- #4 How many air purifiers are in stock?
 
-SELECT COUNT(item_name)
+SELECT item_name, stock_quantity
 FROM superstore
 WHERE item_name = "Air Purifier";
