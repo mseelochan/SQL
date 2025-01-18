@@ -1,0 +1,51 @@
+-- This database is an example implementation used to update data manipulation compared to Excel. 
+
+CREATE TABLE car_inventory (
+	car_id INTEGER PRIMARY KEY,
+	model VARCHAR(50),
+	make VARCHAR(50),
+  	car_year INTEGER,
+  	purchase_price DECIMAL(10,2),
+  	selling_price DECIMAL (10,2),
+  	quantity_sold REAL
+);
+
+INSERT INTO car_inventory VALUES (10001,"Nissan","Altima", 2006,3100,5000,2);
+INSERT INTO car_inventory VALUES (10002, "Ford", "F-150", 2005,4200,10000,4);
+INSERT INTO car_inventory VALUES (10003, "Honda", "Civic", 2012, 7500,9700,1);
+INSERT INTO car_inventory VALUES (10004, "Chevrolet", "Malibu", 2013, 6000,7400,1);
+INSERT INTO car_inventory VALUES (10005, "Jeep", "Wrangler", 2015, 22000,24000,2);
+INSERT INTO car_inventory VALUES (10006, "Tesla", "Model 3", 2020, 30000,32000,1);
+INSERT INTO car_inventory VALUES (10007, "Toyota", "Camry", 2010, 2500,3500,2);
+INSERT INTO car_inventory VALUES (10008, "Toyota", "Corolla", 2018, 11000,16000,1);
+
+
+The following queries were used to extract results from the database above: 
+
+
+-- Scan the Data 
+SELECT * 
+FROM car_inventory;
+
+-- Implement revenue estimations 
+SELECT car_id,model, (selling_price - purchase_price)*quantity_sold AS total_revenue_on_sale
+FROM car_inventory
+ORDER BY total_revenue_on_sale desc;
+
+-- Which car model are selling the most quantity?
+
+SELECT model,make,MAX(quantity_sold) AS max_amount_sold
+FROM car_inventory;
+
+-- How many different car models are there? 
+
+SELECT COUNT(DISTINCT(model)) AS amount_of_models
+FROM car_inventory;
+
+-- Which car model had the lowest purchasing price?
+
+SELECT model, MIN(purchase_price)
+FROM car_inventory;
+
+
+
