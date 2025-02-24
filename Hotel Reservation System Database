@@ -1,0 +1,228 @@
+
+
+This database that I created is used for managing a hotel reservations system. 
+
+
+/* Building a Hotel Reservations Database 
+*/
+
+-- Tracking the guests 
+
+CREATE TABLE guests ( 
+
+guest_id  INTEGER PRIMARY KEY AUTOINCREMENT, 
+first_name TEXT, 
+last_name TEXT, 
+email VARCHAR(60),
+phone_number VARCHAR(30),
+address VARCHAR (60)
+  
+);
+
+-- Track the types of rooms
+
+CREATE TABLE room_types ( 
+
+type_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+type_name TEXT, 
+description TEXT, 
+fee DECIMAL (10,2)
+ 
+);
+
+-- Strcture room numbers with the types
+
+CREATE TABLE rooms ( 
+
+room_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+type_id INTEGER, 
+room_number INTEGER, 
+status TEXT DEFAULT 'available'
+
+);
+
+-- Links the guests with the rooms 
+
+CREATE TABLE room_reservations ( 
+
+reservation_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+guest_id INTEGER, 
+room_id INTEGER, 
+check_in_date DATE, 
+check_out_date DATE
+  
+);
+
+
+  
+
+INSERT INTO guests (first_name, last_name, email, phone_number, address) VALUES ("Mike", "Denver", "mike.denver@gmail.com", "912-203-5607", " 369 Meadow Lane Park");
+INSERT INTO guests (first_name, last_name, email, phone_number, address) 
+VALUES("John", "Leblowsky", "j.leblowsky@aol.com", "222-340-1208", "340 Golden Crest Parkway");
+INSERT INTO guests (first_name, last_name, email, phone_number, address) VALUES ("Billy", "Shaw", "billyshaw@gmail.com", "210-564-4617", "598 Hopper Six Circle");
+INSERT INTO guests (first_name, last_name, email, phone_number, address) 
+VALUES("Frank", "Joseph", "frank.joseph@gmail.com", "103-650-7697", "210 Blue Lake Lane");
+
+INSERT INTO guests (first_name, last_name, email, phone_number, address) VALUES ("Amanda", "Hersch", "amandahersch@gmail.com", "221-333-9807", " 460 Leafwood Drive");
+INSERT INTO guests (first_name, last_name, email, phone_number, address) 
+VALUES("Meadow", "Morrell", "meadow.morrell@aol.com", "912-367-4950", "370 Wakecrest Blvd");
+INSERT INTO guests (first_name, last_name, email, phone_number, address) VALUES ("Mandy", "Rhodes", "mandy.rhodes@aol.com", "123-456-7890", "670 Monk Avenue");
+INSERT INTO guests (first_name, last_name, email, phone_number, address) 
+VALUES("Joel", "Justin", "joeljustin@gmail.com", "203-560-8970", "564 Crestwood Parkway");
+
+INSERT INTO guests (first_name, last_name, email, phone_number, address) VALUES ('Mike', 'Vernacruz', 'mike.vernacruz1@gmail.com', '023-456-7809', ' 231 Pigeon Rd');
+INSERT INTO guests (first_name, last_name, email, phone_number, address) 
+VALUES("Tom", "Clonderwitz", "tomclonderwitz2@aol.com", "345-567-4055", "650 Cliff Rd");
+INSERT INTO guests (first_name, last_name, email, phone_number, address) VALUES ("Cobb", "Smith", "cobbsmith@gmail.com", "123-564-3042", "895 Hoppins  Circle");
+INSERT INTO guests (first_name, last_name, email, phone_number, address) 
+VALUES("Mello", "Workz", "mello.workz@aol.com", "103-650-7697", "610 Brick Lane");
+
+
+INSERT INTO room_types (type_name, description, fee) VALUES ("Single", "Twin bed single room for one person", 59.99); 
+INSERT INTO room_types (type_name, description, fee) VALUES ("Double", "Double bed room for two person", 129.99);
+INSERT INTO room_types (type_name, description, fee) VALUES ("Suite", "Luxurious suite with king-sized bed", 249.99);
+
+
+INSERT INTO rooms (type_id, room_number) VALUES(1, 101);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 102);
+INSERT INTO rooms (type_id, room_number) VALUES(3, 103);
+INSERT INTO rooms (type_id, room_number) VALUES(1, 104);
+INSERT INTO rooms (type_id, room_number) VALUES(1, 105);
+INSERT INTO rooms (type_id, room_number) VALUES(1, 106);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 107);
+INSERT INTO rooms (type_id, room_number) VALUES(3, 108);
+INSERT INTO rooms (type_id, room_number) VALUES(1, 109);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 110);
+INSERT INTO rooms (type_id, room_number) VALUES(3, 111);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 112);
+INSERT INTO rooms (type_id, room_number) VALUES(3, 113);
+INSERT INTO rooms (type_id, room_number) VALUES(1, 114);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 115);
+INSERT INTO rooms (type_id, room_number) VALUES(3, 116);
+INSERT INTO rooms (type_id, room_number) VALUES(1, 117);
+INSERT INTO rooms (type_id, room_number) VALUES(1, 118);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 119);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 120);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 121);
+INSERT INTO rooms (type_id, room_number) VALUES(1, 122);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 123);
+INSERT INTO rooms (type_id, room_number) VALUES(3, 124);
+INSERT INTO rooms (type_id, room_number) VALUES(2, 125);
+INSERT INTO rooms (type_id, room_number) VALUES(3, 126);
+
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (2, 1, "2024-07-24", "2024-07-26");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (3, 2, "2024-07-21", "2024-07-24");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (5, 3, "2024-07-22", "2024-07-24");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (1, 5, "2024-08-16", "2024-08-19");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (6, 11, "2024-08-14", "2024-08-19");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (7, 16, "2024-09-17", "2024-09-22");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (8, 17, "2024-09-12", "2024-09-13");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (10, 21, "2024-09-18", "2024-09-21");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (9, 20, "2024-07-14", "2024-07-15");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (11, 14, "2024-09-20", "2024-09-21");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (12, 19, "2024-08-15", "2024-08-21");
+INSERT INTO room_reservations (guest_id,room_id,check_in_date, check_out_date) VALUES (4, 22, "2024-08-17", "2024-08-21");
+
+-- Changing the price 
+
+UPDATE room_types SET fee = 79.99 WHERE type_id = 1;
+
+-- Changing room occupancy (Database type adjustment)
+
+UPDATE rooms SET status = "unavailable" WHERE room_id = 1;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 2;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 3;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 5;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 11;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 16;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 17;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 21;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 20;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 14;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 19;
+UPDATE rooms SET status = "unavailable" WHERE room_id = 22;
+
+-- Here I created 4 separate tables (guests, rooms, room_types, and current reservations). Then I implemented an updating system to change the availabilty status of the
+rooms that are currently occupied along with updating the pricing model of the single bed room from $59.99 to $79.99.
+
+-- Scan the database
+
+SELECT *
+FROM guests;
+
+SELECT * 
+FROM room_types;
+
+SELECT *
+FROM rooms;
+
+(Database adjustment type example) 
+
+SELECT *
+FROM room_reservations;
+
+-- Update the rooms table status to show which rooms are now unavailable from the reservations list.
+
+-- (SEE IN DATABASE)
+
+
+SELECT * 
+FROM rooms;
+
+-- Check which rooms are still available and then provide a count for how many.
+
+SELECT room_number  AS "rooms_available"
+FROM rooms 
+WHERE status = "available";
+
+SELECT COUNT(*)  AS "number_of_rooms_available"
+FROM rooms 
+WHERE status = "available"; 
+
+-- Get the names of the guests and the types of rooms they are assigned to.
+
+SELECT guests.first_name, guests.last_name,room_types.type_name
+FROM guests 
+LEFT JOIN room_reservations reserv
+ON guests.guest_id = reserv.guest_id
+LEFT JOIN rooms 
+ON reserv.room_id = rooms.room_id
+LEFT JOIN room_types
+ON rooms.type_id = room_types.type_id;
+
+-- Now provide a count for the number of guests that are in each type of rooms.
+
+SELECT room_types.type_name AS room_type, COUNT(*) AS total_type_occupied
+FROM guests 
+LEFT JOIN room_reservations reserv
+ON guests.guest_id = reserv.guest_id
+LEFT JOIN rooms 
+ON reserv.room_id = rooms.room_id
+LEFT JOIN room_types
+ON rooms.type_id = room_types.type_id
+GROUP BY room_types.type_name;
+
+-- Check to see which guest spent the longest time at the hotel and how long did they spend?
+
+SELECT guests.first_name, julianday(reserv.check_out_date) -  julianday(reserv.check_in_date) AS "reservation_days"
+FROM guests
+LEFT JOIN room_reservations reserv
+ON guests.guest_id = reserv.guest_id
+ORDER BY reservation_days desc
+LIMIT 1;
+
+-- Show how much each guest spent for the total bookings, provide from highest to lowest order. 
+
+SELECT guests.first_name, guests.last_name ,julianday(reserv.check_out_date)-julianday(reserv.check_in_date) AS nights_spent, 
+ROUND(CAST(julianday(reserv.check_out_date) - julianday(reserv.check_in_date) AS INTEGER) *room_types.fee,2) AS total_spent
+FROM guests 
+LEFT JOIN room_reservations reserv
+ON guests.guest_id = reserv.guest_id 
+LEFT JOIN rooms
+ON reserv.room_id = rooms.room_id 
+LEFT JOIN room_types 
+ON rooms.type_id = room_types.type_id
+ORDER BY total_spent desc;                                                                            
+
+
+
