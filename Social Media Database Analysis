@@ -1,0 +1,136 @@
+This custom database I created was used to simulate the structure of social media database.
+
+/* Creating a database to explain social media systems */
+
+CREATE TABLE user_info ( 
+user_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+first_name TEXT, 
+last_name TEXT,
+username VARCHAR(40), 
+email VARCHAR (40), 
+password VARCHAR (40), 
+date_joined DATE
+  
+);
+
+CREATE TABLE posts (
+post_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+user_id INTEGER,
+likes INTEGER, 
+message TEXT
+); 
+
+CREATE TABLE friendship (
+  
+friendship_id INTEGER PRIMARY KEY AUTOINCREMENT,
+user_id1 INTEGER,
+user_id2 INTEGER
+
+);
+
+
+
+INSERT INTO user_info (first_name, last_name, username, email, password, date_joined) VALUES ("John", "Baker", "jbaker", "jbaker@gmail.com", "youcouldnthaveguessedthis", "2023-02-12");
+INSERT INTO user_info (first_name, last_name, username, email, password, date_joined) VALUES ("Mark", "Robin", "mrobin0102", "mark.robin@aol.com", "lookoutforthebird", "2023-01-20");
+INSERT INTO user_info (first_name, last_name, username, email, password, date_joined) VALUES ("Bonnie", "Hyon", "bhonnie333", "bonnie.hyon@gmail.com", "laserfocused0293", "2023-04-16");
+INSERT INTO user_info (first_name, last_name, username, email, password, date_joined) VALUES ("Jack", "Dunwitz", "jdunwitz0343", "jack.dunwitz@aol.com", "dunwitz.jack1@aol.com", "2023-03-11");
+INSERT INTO user_info (first_name, last_name, username, email, password, date_joined) VALUES ("Merk", "Dion", "mdion232", "merk.dion@gmail.com", "dandelion232", "2023-01-06");
+INSERT INTO user_info (first_name, last_name, username, email, password, date_joined) VALUES ("Preston", "Hill", "phill3043", "hill.preston@gmail.com", "lookmeup2031", "2023-01-02");
+INSERT INTO user_info (first_name, last_name, username, email, password, date_joined) VALUES ("Winston", "Wilheim", "winwil209", "winstonwilheim@aol.com", "Crescent0192", "2023-07-02");
+
+
+INSERT INTO posts (user_id, likes, message) VALUES (2, 2304, "Aliens, if you're out there... we get it. You’ve been watching us for centuries, and honestly, we’re just waiting for you to land already. At this point, we’ll do anything for a good intergalactic vacation. Seriously, can you take us to a planet where WiFi is always fast, the coffee is never cold, and laundry does itself? Let’s make this happen! 🌌👽 #TakeUsToYourLeader #SendUsYourTech");
+INSERT INTO posts (user_id, likes, message) VALUES (1, 54200,"Accounting: Where 'creative' means finding new ways to make numbers add up, and 'balance' means hoping the numbers match after the fifth coffee break. 😂 If I had a dollar for every time I said 'I’ll just fix this one thing'... well, I’d still have to balance my budget.");
+INSERT INTO posts (user_id, likes, message) VALUES (4, 1302300,"Ever notice how animals seem to have their own secret comedy club? My dog acts like he's innocent even after he’s chewed up my favorite shoes, and my cat? Well, she sits on my keyboard like she’s the CEO of naptime. Meanwhile, squirrels put on acrobatic shows for no one in particular—nature’s stand-up routine, and we're all the audience! #AnimalAntics #NatureComedy");
+INSERT INTO posts (user_id, likes, message) VALUES (5, 101560,"Just took a stroll in nature and realized Mother Nature is the ultimate comedian! The trees were throwing shade at the wind, a squirrel just pulled off a peanut heist right in front of me, and even the clouds looked like they were giggling. Who knew the great outdoors had its own stand-up routine? #NatureHumor #EcoComedy #WildlyFunny");
+INSERT INTO posts (user_id, likes, message) VALUES (3, 50983,"Clowns are basically the party planners of the circus, but with way too much face paint and an unhealthy obsession with balloons. Honestly, I think their whole vibe is just 'I’m here to make you laugh… and maybe slightly question your life choices.");
+INSERT INTO posts (user_id, likes, message) VALUES (6, 40399,"Why do socks always disappear in the laundry? Are they secretly running away to start a new life in some sock utopia where they never have to deal with cold floors again? At this point, I’m convinced they’ve formed a secret society and are plotting their escape. 🧦💨 #SockMysteries #LaundryConspiracy #WhereDoTheyGo");
+INSERT INTO posts (user_id, likes, message) VALUES (5, 67058,"Some days I wonder if my WiFi has a secret life. It works perfectly fine until I actually need it, then it’s like, 'Oh, you want to load that webpage? Nah, I’m on break.' Is there a WiFi union I don’t know about?");
+INSERT INTO posts (user_id, likes, message) VALUES (2, 34201,"Trying to eat healthy, but then my fridge gives me the side-eye every time I open it. Like, ‘You know you want the pizza, right?’ Honestly, I think my fridge has a better social life than I do, always stocked with leftovers and takeout. 🍕🥗");
+INSERT INTO posts (user_id, likes, message) VALUES (7, 670002,"Why is it that the moment you find the perfect spot to sit, someone always asks, 'Can you move?' It's like the universe is testing my patience, one awkward shuffle at a time. Seriously, I’m considering putting a 'Do Not Disturb' sign on my chair. 🪑🚫 #PersonalSpacePlease #ChairWars #SitDownAndStay");
+INSERT INTO posts (user_id, likes, message) VALUES (3,450,"Ever notice how we all have a 'phone voice'? One second you’re talking normally, then your phone rings and suddenly you’re a customer service representative from another dimension. 'Oh hiiii! Yes, of course! No problem at all!' Who am I? Where did this voice come from? Why am I suddenly overly polite?! 📞😂 #PhoneVoiceActivated #WhoAmI #AutomaticPoliteness");
+
+INSERT INTO friendship (user_id1, user_id2) VALUES (1,3);
+INSERT INTO friendship (user_id1, user_id2) VALUES (3,1);
+INSERT INTO friendship (user_id1, user_id2) VALUES (2,3);
+INSERT INTO friendship (user_id1, user_id2) VALUES (3,2);
+INSERT INTO friendship (user_id1, user_id2) VALUES (2,4);
+INSERT INTO friendship (user_id1, user_id2) VALUES (4,2);
+INSERT INTO friendship (user_id1, user_id2) VALUES (2,7);
+INSERT INTO friendship (user_id1, user_id2) VALUES (3,5);
+INSERT INTO friendship (user_id1, user_id2) VALUES (5,3);
+INSERT INTO friendship (user_id1, user_id2) VALUES (6,2);
+INSERT INTO friendship (user_id1, user_id2) VALUES (2,6);
+INSERT INTO friendship (user_id1, user_id2) VALUES (6,7);
+INSERT INTO friendship (user_id1, user_id2) VALUES (7,6);
+INSERT INTO friendship (user_id1, user_id2) VALUES (7,5);
+INSERT INTO friendship (user_id1, user_id2) VALUES (5,7);
+INSERT INTO friendship (user_id1, user_id2) VALUES (7,2);
+
+-- The tables above show user information, the posts they created, and a relationship between the user and the friends they have. 
+
+
+
+-- What are posts user 2 has made? 
+
+SELECT info.user_id, posts.message 
+FROM posts 
+LEFT JOIN user_info info 
+ON posts.user_id = info.user_id
+WHERE posts.user_id = 2; 
+
+-- Find the list of friends for Bonnie Hyon. 
+SELECT CONCAT(a.first_name, " ", a.last_name) AS user_fullname, CONCAT(b.first_name," ",  b.last_name) AS friends_fullname
+FROM friendship ship
+LEFT JOIN user_info a
+ON a.user_id = ship.user_id1
+LEFT JOIN user_info b
+ON b.user_id = ship.user_id2
+WHERE a.first_name = "Bonnie" 
+AND a.last_name = "Hyon"
+AND ship.user_id1 = 3;
+
+-- Find the list of friends for Merk Dion. 
+SELECT CONCAT(a.first_name, " ", a.last_name) AS user_fullname, CONCAT(b.first_name," ",  b.last_name) AS friends_fullname
+FROM friendship ship
+LEFT JOIN user_info a
+ON a.user_id = ship.user_id1
+LEFT JOIN user_info b
+ON b.user_id = ship.user_id2
+WHERE a.first_name = "Merk" 
+AND a.last_name = "Dion"
+AND ship.user_id1 = 5;
+
+-- Which user(s) has/have made the most posts? 
+SELECT info.first_name, info.last_name, COUNT(posts.message) AS total_posts 
+FROM user_info info 
+LEFT JOIN  posts 
+ON posts.user_id = info.user_id
+GROUP BY info.first_name, info.last_name
+ORDER BY total_posts desc;
+
+
+-- Which user received the most likes overall from all their posts? 
+
+SELECT info.first_name, info.last_name, SUM(likes) AS total_likes
+FROM user_info info 
+LEFT JOIN posts 
+ON info.user_id = posts.user_id 
+GROUP BY info.first_name, info.last_name
+ORDER BY total_likes desc
+LIMIT 1;
+
+-- Who was the first ever user to join the platform?
+
+SELECT info.first_name, info.last_name, MIN(date_joined) AS first_user
+FROM user_info info;
+
+
+-- Get the names and emails of the users who joined in january 2023. 
+
+SELECT info.first_name, info.last_name, info.email
+FROM user_info info 
+WHERE date_joined BETWEEN '2023-01-01' AND '2023-01-31';
+
+
+
