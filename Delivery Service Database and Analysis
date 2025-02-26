@@ -1,0 +1,156 @@
+/* Custom Database for Food Delivery Service System */ 
+
+-- Breaking down the database structure: 
+
+-- Customers Table: 
+
+-- customer information log: customer id, customer name (first and last
+-- or full name), customer email, customer phone, customer address, customer state
+
+-- Orders Table:
+-- order id, customer id  order name, order time, Paid in Full Flag. 
+
+-- Driver's Table:
+-- driver id, driver name, order id (for order delivering).
+
+CREATE TABLE customers (
+  
+customer_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+name TEXT,
+phone_number VARCHAR(30), 
+email VARCHAR(50), 
+address VARCHAR(50), 
+state TEXT
+  
+);
+
+CREATE TABLE orders (
+  
+order_id INTEGER PRIMARY KEY AUTOINCREMENT,
+customer_id INTEGER, 
+order_name VARCHAR(50),
+order_time VARCHAR(20), 
+paid_in_full BIT
+  
+);
+
+CREATE TABLE drivers (
+  
+driver_id INTEGER PRIMARY KEY AUTOINCREMENT,
+order_id INTEGER,
+driver_name TEXT
+  
+);
+
+INSERT INTO customers (name, phone_number, email, address, state) VALUES ("Jeff Bren", "192-304-5043", "jeff.bren@gmail.com", "392 Maynard Lane", "Georgia");
+INSERT INTO customers (name, phone_number, email, address, state) VALUES ("Michael Jones", "912-367-7892", "michael.jones@gmail.com", "596 Pines Road", "Georgia");
+INSERT INTO customers (name, phone_number, email, address, state) VALUES ("Bob Combs", "454-102-0659", "bob.combs@gmail.com", "650 Bill Lane", "Florida");
+INSERT INTO customers (name, phone_number, email, address, state) VALUES ("Oliver Brooks", "912-453-1806", "oliver.brooks1@aol.com", "762 Leopard Circle", "Florida");
+INSERT INTO customers (name, phone_number, email, address, state) VALUES ("Amelia Vaughn", "901-563-8759", "amelia.vaughn2@gmail.com", "921 Birk Avenue", "Georgia");
+INSERT INTO customers (name, phone_number, email, address, state) VALUES ("Isabelle Greene", "912-544-6987", "isabelle.greene@aol.com", "933 Mulen Road", "Georgia");  
+INSERT INTO customers (name, phone_number, email, address, state) VALUES ("Isabelle Greene", "912-544-6987", "isabelle.greene@aol.com", "933 Mulen Road", "Georgia");    
+INSERT INTO customers (name, phone_number, email, address, state) VALUES 
+("Liam Carter", "305-221-7896", "liam.carter@gmail.com", "120 Oak Street", "Florida");  
+INSERT INTO customers (name, phone_number, email, address, state) VALUES 
+("Emma Reynolds", "415-632-1478", "emma.reynolds@yahoo.com", "78 Maple Ave", "California");  
+INSERT INTO customers (name, phone_number, email, address, state) VALUES 
+("Noah Bennett", "212-908-3652", "noah.bennett@hotmail.com", "15 Pine Drive", "New York");  
+INSERT INTO customers (name, phone_number, email, address, state) VALUES 
+("Ava Mitchell", "678-451-2379", "ava.mitchell@gmail.com", "42 River Lane", "Georgia"); 
+
+
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES (1, "Cheeseburger Meal", "2025-02-20 12:30:00", 1);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(3, "Pepperoni Pizza", "2025-02-21 18:45:00", 0);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(4, "Caesar Salad", "2025-02-22 13:15:00", 1);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(5, "Sushi Platter", "2025-02-23 19:30:00", 1);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(2, "BBQ Ribs", "2025-02-24 20:00:00", 0);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(10, "Iced Coffee", "2025-02-28 09:30:00", 1);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(8, "Chocolate Cake", "2025-02-28 15:40:00", 1);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(7, "Vegan Burger", "2025-02-27 12:10:00", 1);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(6, "Chicken Tacos", "2025-02-26 17:25:00", 0);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(11, "Pasta Alfredo", "2025-02-25 14:00:00", 1);
+INSERT INTO orders (customer_id, order_name, order_time, paid_in_full) VALUES 
+(9, "Teriyaki Chicken", "2025-03-06 13:50:00", 1);
+
+
+INSERT INTO drivers (order_id, driver_name) VALUES(1, "Marcus Crowne");
+INSERT INTO drivers (order_id, driver_name) VALUES(7, "Marcus Crowne");
+INSERT INTO drivers (order_id, driver_name) VALUES(3, "Ben Rolland");
+INSERT INTO drivers (order_id, driver_name) VALUES(4, "Betty Stone");
+INSERT INTO drivers (order_id, driver_name) VALUES(6, "Ben Rolland");
+INSERT INTO drivers (order_id, driver_name) VALUES(7, "Betty Stone");
+INSERT INTO drivers (order_id, driver_name) VALUES(10, "Marcus Crowne");
+INSERT INTO drivers (order_id, driver_name) VALUES(8, "Betty Stone");
+INSERT INTO drivers (order_id, driver_name) VALUES(1, "Marcus Crowne");
+
+
+SELECT * 
+FROM customers;
+
+
+SELECT * 
+FROM orders;
+
+SELECT * 
+FROM drivers;
+
+
+-- Orders should only be delivered if the orders are "paid in full" provide a list of the orders that are paid in full. 
+
+SELECT orders.order_id
+FROM orders 
+WHERE paid_in_full = TRUE;
+
+-- Which driver is doing the most deliveries for the day? Give their full name as well as their id. 
+
+SELECT drivers.driver_name,drivers.driver_id, COUNT(orders.order_id) as total_orders
+FROM drivers 
+LEFT JOIN orders 
+ON drivers.order_id = orders.order_id
+WHERE orders.paid_in_full = 1
+GROUP BY drivers.driver_name
+ORDER BY total_orders desc
+LIMIT 1;
+
+
+-- "Hi, I am Oliver Brooks. I'm calling to find out who is delivering my order." Use this scenario to find out who is delivering Oliver's food.
+
+SELECT customers.name, drivers.driver_name
+FROM customers
+LEFT JOIN orders 
+ON customers.customer_id = orders.customer_id
+LEFT JOIN drivers 
+ON orders.order_id = drivers.order_id
+WHERE customers.name = "Oliver Brooks"; 
+
+-- You need to contact the customers whose payments were not completed in full or did not process properly. Provide a list of those customers to contact by phone and email. 
+
+SELECT customers.name, customers.phone_number,customers.email
+FROM customers 
+INNER JOIN orders 
+ON customers.customer_id = orders.customer_id
+WHERE paid_in_full = 0; 
+
+
+-- The delivery service has a policy that offers a customer $5 credit if the order is delivered after 60 minutes. Customer 1 said that his order was delivered after 1 hour. 
+-- The current time is 2025-02-20 13:45:00 (or 1:45) does he get a credit? 
+
+SELECT ROUND((julianday("2025-02-20 13:45:00") - julianday(orders.order_time)) * 1440) AS delivery_minutes
+FROM customers 
+LEFT JOIN orders 
+ON orders.customer_id = customers.customer_id
+WHERE customers.customer_id = 1; 
+
+-- Yes, the customer would get the $5 credit
+-- since the order took 75 minutes.
+                                                   
+                              
