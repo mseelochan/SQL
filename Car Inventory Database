@@ -1,7 +1,8 @@
--- This database is an example implementation used to update data manipulation compared to Excel. 
+-- This  custom database is an example for a dealership to track car purchases, selling prices, and overall demand.
+
 
 CREATE TABLE car_inventory (
-	car_id INTEGER PRIMARY KEY,
+	car_id INTEGER PRIMARY KEY AUTOINCREMENT,
 	model VARCHAR(50),
 	make VARCHAR(50),
   	car_year INTEGER,
@@ -10,22 +11,74 @@ CREATE TABLE car_inventory (
   	quantity_sold REAL
 );
 
-INSERT INTO car_inventory VALUES (10001,"Nissan","Altima", 2006,3100,5000,2);
-INSERT INTO car_inventory VALUES (10002, "Ford", "F-150", 2005,4200,10000,4);
-INSERT INTO car_inventory VALUES (10003, "Honda", "Civic", 2012, 7500,9700,1);
-INSERT INTO car_inventory VALUES (10004, "Chevrolet", "Malibu", 2013, 6000,7400,1);
-INSERT INTO car_inventory VALUES (10005, "Jeep", "Wrangler", 2015, 22000,24000,2);
-INSERT INTO car_inventory VALUES (10006, "Tesla", "Model 3", 2020, 30000,32000,1);
-INSERT INTO car_inventory VALUES (10007, "Toyota", "Camry", 2010, 2500,3500,2);
-INSERT INTO car_inventory VALUES (10008, "Toyota", "Corolla", 2018, 11000,16000,1);
+CREATE TABLE purchases (
+
+customer_id INTEGER,
+car_id INTEGER, 
+quantity_purchased INTEGER
+  
+ );
+ 
+CREATE TABLE customers (
+
+customer_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+name TEXT, 
+phone_number VARCHAR(55)
+  
+);
+
+  
+INSERT INTO car_inventory (model, make, car_year, purchase_price, selling_price, quantity_sold) VALUES ("Nissan","Altima", 2006,3100,5000,2);
+INSERT INTO car_inventory (model, make, car_year, purchase_price, selling_price, quantity_sold) VALUES ( "Ford", "F-150", 2005,4200,10000,4);
+INSERT INTO car_inventory (model, make, car_year, purchase_price, selling_price, quantity_sold) VALUES ( "Honda", "Civic", 2012, 7500,9700,1);
+INSERT INTO car_inventory (model, make, car_year, purchase_price, selling_price, quantity_sold) VALUES ("Chevrolet", "Malibu", 2013, 6000,7400,1);
+INSERT INTO car_inventory (model, make, car_year, purchase_price, selling_price, quantity_sold) VALUES ("Jeep", "Wrangler", 2015, 22000,24000,2);
+INSERT INTO car_inventory (model, make, car_year, purchase_price, selling_price, quantity_sold) VALUES ("Tesla", "Model 3", 2020, 30000,32000,1);
+INSERT INTO car_inventory (model, make, car_year, purchase_price, selling_price, quantity_sold) VALUES ("Toyota", "Camry", 2010, 2500,3500,2);
+INSERT INTO car_inventory (model, make, car_year, purchase_price, selling_price, quantity_sold) VALUES ( "Toyota", "Corolla", 2018, 11000,16000,1);
 
 
-The following queries were used to extract results from the database above: 
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (2,1,1);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (4,1,1);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (1,2,1);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (3,3,1);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (5,8,1);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (6,7,2);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (8,6,1);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (10,5,1);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (11,5,1);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (9,4,1);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (13,2,2);
+INSERT INTO purchases (customer_id,car_id,quantity_purchased) VALUES (14,2,1);
 
 
--- Scan the Data 
+INSERT INTO customers (name, phone_number) VALUES ("Michael Lombo", "912-695-2031");
+INSERT INTO customers (name, phone_number) VALUES ("Franz Mills", "912-345-3002");
+INSERT INTO customers (name, phone_number) VALUES ("Bobby Font", "914-607-8334");
+INSERT INTO customers (name, phone_number) VALUES ("Birk Bollin", "404-356-6702");
+INSERT INTO customers (name, phone_number) VALUES ("Jake Stilton", "916-011-3042");
+INSERT INTO customers (name, phone_number) VALUES ("Frank Lake", "914-302-3652");
+INSERT INTO customers (name, phone_number) VALUES ("Steven Schmidt", "912-021-8505");
+INSERT INTO customers (name, phone_number) VALUES ("Dev Scott", "324-300-6940");
+INSERT INTO customers (name, phone_number) VALUES ("Barbara Caufield", "465-021-6041");
+INSERT INTO customers (name, phone_number) VALUES ("Milton Holmes", "912-231-4021");
+INSERT INTO customers (name, phone_number) VALUES ("Judith Jane", "901-402-5667");
+INSERT INTO customers (name, phone_number) VALUES ("Paul Wright", "202-121-8555");
+INSERT INTO customers (name, phone_number) VALUES ("Ryan Fortune", "421-340-6710");
+INSERT INTO customers (name, phone_number) VALUES ("Bobby Dunns", "454-201-8769");
+
+
+-- The following queries were used to extract results from the database above: 
+
+
 SELECT * 
 FROM car_inventory;
+
+SELECT * 
+FROM purchases;
+
+SELECT * 
+FROM customers;
 
 -- Implement revenue estimations 
 SELECT car_id,model, (selling_price - purchase_price)*quantity_sold AS total_revenue_on_sale
@@ -46,6 +99,16 @@ FROM car_inventory;
 
 SELECT model, MIN(purchase_price)
 FROM car_inventory;
+
+-- Show all of the cars purchased along with the person who purchased the cars and the selling prices from highest to lowest to determine our top customers. 
+
+SELECT customers.name, inv.model, inv.make, inv.selling_price 
+FROM customers 
+INNER JOIN purchases 
+ON customers.customer_id = purchases.customer_id
+INNER JOIN car_inventory inv 
+ON purchases.car_id = inv.car_id
+ORDER BY inv.selling_price desc;
 
 
 
