@@ -1,0 +1,186 @@
+/* This is a custom database for Scooby-Doo 
+
+Season id, episodes, titles, imdb ratings, year released 
+
+*/ 
+
+
+CREATE TABLE episodes ( 
+  
+   season_id INTEGER,
+  episode_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR (55), 
+  imdb DECIMAL (10,2), 
+  year_released INTEGER
+  
+  );
+  
+  
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1, "What a Night for a Knight", 7.6, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"A Clue for Scooby-Doo", 7.6, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"Hassle in the Castle", 7.8, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"Mine Your Own Business", 7.5, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"Decoy for a Dognapper", 7.6, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"What the Hex Going On?", 7.7, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"Never Ape an Ape Man", 7.6, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"Foul Play in Funland", 7.7, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"Scooby-Doo and a Mummy, Too", 7.6, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"Snow Job Too Small", 7.4, 1969);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"The Backstage Rage", 7.6, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"The Creepy Case of Old Ironface", 7.7, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"The Ghost of the Red Baron", 7.7, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"Go Away Ghost Ship", 7.6, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"A Gaggle for Galloping Ghosts", 7.6, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (1,"The Mystery of Monster Island", 7.8, 1970);
+
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"Nowhere to Hide", 7.7, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"Mystery Mask Mix-Up", 7.7, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"Scooby's Night with a Frozen Fright", 7.5, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"Jeepers, It's the Creeper", 7.7, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"The Tar Monster", 7.8, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"The Haunted House Hang-Up", 7.7, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"The Secret of the Ghost Rig", 7.7, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"The Dynamic Scooby-Doo Affair", 7.6, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"The Caped Crusade Caper", 7.5, 1970);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"The Night Ghoul of Dark Tower", 7.8, 1971);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"The Invisible Monster", 7.8, 1971);
+INSERT INTO episodes (season_id, title, imdb, year_released) 
+VALUES (2,"Scooby-Doo Where Are You?", 7.5, 1971);
+
+CREATE TABLE villain ( 
+
+  episode_id INTEGER PRIMARY KEY, 
+  fred BIT, 
+  daphne BIT,
+  velma BIT, 
+  shaggy BIT,
+  scooby BIT 
+  
+  );
+  
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,0,1,1);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,0,1,1);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,1,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,1,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,0,1,1);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,1,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,1,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,1,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,0,1,1);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,1,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,0,1,1);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,1,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,0,1,1);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,1,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,1,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,1,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (1,0,0,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,1,0,0);
+  INSERT INTO villain (fred, daphne, velma, shaggy, scooby) VALUES (0,0,0,1,1);
+
+
+-- These are the queries I used to gather relevant information from the data.
+
+SELECT *
+FROM episodes;
+
+SELECT * 
+FROM villain;
+
+-- Who caught the villain in season 1 episode 1 of Scooby-Doo? 
+
+-- Here we used separate case statements to trigger when flag is correct, then concatenate them as if a logical statement. 
+
+SELECT 
+  episode_id,
+  CONCAT_WS(', ', 
+     CASE WHEN fred = 1 THEN 'Fred' END,
+ 	   CASE WHEN daphne = 1 THEN 'Daphne' END,
+     CASE WHEN velma = 1 THEN 'Velma'  END,
+     CASE WHEN shaggy = 1 THEN 'Shaggy' END,
+     CASE WHEN scooby = 1 THEN 'Scooby' END ) 
+     'caught_villain'
+FROM villain;
+
+-- In the episode titled "Hassle in the Castle" who caught the villain?
+SELECT 
+  villain.episode_id ,episodes.title, 
+  CONCAT_WS(', ', 
+     CASE WHEN fred = 1 THEN 'Fred' END,
+ 	   CASE WHEN daphne = 1 THEN 'Daphne' END,
+     CASE WHEN velma = 1 THEN 'Velma'  END,
+     CASE WHEN shaggy = 1 THEN 'Shaggy' END,
+     CASE WHEN scooby = 1 THEN 'Scooby' END ) 
+     'caught_villain'
+FROM villain
+LEFT JOIN episodes 
+ON villain.episode_id = episodes.episode_id
+WHERE episodes.title = 'Hassle in the Castle';
+
+
+-- What is the average imdb (internet movie database rating) for all episodes in season 2? 
+
+SELECT ROUND(avg(imdb),2) AS avg_imdb_rating 
+FROM episodes 
+WHERE season_id = 2;
+
+
+-- Who caught the most villains?
+SELECT  
+  CONCAT_WS(', ', 
+     CASE WHEN fred = 1 THEN 'Fred' END,
+ 	   CASE WHEN daphne = 1 THEN 'Daphne' END,
+     CASE WHEN velma = 1 THEN 'Velma'  END,
+     CASE WHEN shaggy = 1 THEN 'Shaggy' END,
+     CASE WHEN scooby = 1 THEN 'Scooby' END ) 
+     'caught_villain', COUNT(*) AS 'amount_caught'
+FROM villain
+GROUP BY caught_villain
+ORDER BY amount_caught desc
+LIMIT 1;
+
+--  What is the first episode released in 1970? 
+
+SELECT episodes.title, year_released 
+FROM episodes 
+WHERE year_released = 1970
+ORDER BY year_released asc
+LIMIT 1;
+
+
