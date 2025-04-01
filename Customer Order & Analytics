@@ -1,14 +1,14 @@
 In this SQL, I am querying a database with multiple tables and I am using SQLite to relate relevant customer information and order data.
 
-#1. How many orders were placed in January? 
-SELECT COUNT(orderID)
+#1. How many unique orders were placed in January? 
+SELECT COUNT(DISTINCT(orderID))
 FROM BIT_DB.JanSales
 WHERE length(orderID) = 6
 AND orderID <> 'Order ID';
 
 #2. How many of those orders were for an iPhone? 
 
-SELECT COUNT(orderID) 
+SELECT COUNT(DISTINCT(orderID))
 FROM BIT_DB.JanSales 
 WHERE Product = 'iPhone'
 AND length(orderID) = 6
@@ -68,6 +68,14 @@ WHERE Quantity > 2
 AND length(orderID) = 6
 AND orderID <> 'Order ID'
 GROUP BY acctnum;
+
+#7.5 List all the products sold in Los Angeles in February, and include how many of each were sold.
+
+SELECT Product, SUM(quantity) 
+FROM BIT_DB.FebSales
+WHERE location LIKE '%Los Angeles%'
+GROUP BY Product;
+
 
 #8. Which locations in New York received at least 3 orders in January, and how many orders did they each receive?
 
