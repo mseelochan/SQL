@@ -54,8 +54,8 @@ LIMIT 1;
 
 -- What's the average danceability for the 10 most popular songs?
 
-SELECT track_name, avg(danceability) as avg_danceability
-FROM BIT_DB.Spotifydata
-GROUP BY track_name
-ORDER BY avg_danceability desc
+SELECT track_name, popularity, avg(danceability)
+FROM BIT_DB.SpotifyData
+GROUP BY track_name 
+ORDER BY popularity desc
 LIMIT 10;
