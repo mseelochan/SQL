@@ -72,7 +72,13 @@ INSERT INTO friendship (user_id1, user_id2) VALUES (7,2);
 
 
 -- What are posts user 2 has made? 
+-- simplified answer: 
 
+SELECT user_id, message
+FROM posts 
+WHERE user_id = 2;
+
+-- With using a join 
 SELECT info.user_id, posts.message 
 FROM posts 
 LEFT JOIN user_info info 
