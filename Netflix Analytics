@@ -66,7 +66,7 @@ VALUES
 
 -- How many movie titles are there in the database? (movies only, not tv shows)
 
-SELECT COUNT(titles)
+SELECT COUNT(titles.title)
 FROM "netflix_titles_info" titles
 WHERE titles.type='Movie';
 
