@@ -872,6 +872,16 @@ FROM pokemon;
 SELECT name, MIN(defense)
 FROM pokemon;
 
+/* Upon further inspection multiple pokemon had the same low HP of 5. Here I implemented 
+a check by Def descending first, then a LIMIT to capture the correct result.*/ 
+
+SELECT name, Defense 
+FROM pokemon
+ORDER BY Defense asc
+LIMIT 2;
+
+​
+
 
 
 
