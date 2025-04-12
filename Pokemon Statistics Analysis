@@ -824,7 +824,7 @@ Here are some relevant queries that I performed to explain some information from
 SELECT * FROM pokemon LIMIT 5;
 
 
--- Find which pokemon have more than 200 HP and Sp_Def > 170.
+-- Find which pokemon have more than 200 HP OR Sp_Def > 170.
 
 SELECT name, type_1 
 FROM pokemon 
