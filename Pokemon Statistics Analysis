@@ -880,6 +880,11 @@ FROM pokemon
 ORDER BY Defense asc
 LIMIT 2;
 
+/* Another solution would be to implement a subquery. */
+
+SELECT name, Defense 
+FROM pokemon 
+WHERE Defense IN (SELECT MIN(Defense) FROM pokemon);
 ​
 
 
