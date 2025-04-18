@@ -96,6 +96,18 @@ WHERE a.first_name = "Bonnie"
 AND a.last_name = "Hyon"
 AND ship.user_id1 = 3;
 
+
+-- Find the list of friends for Bonnie Hyon. ** This updated version is more efficient **
+
+SELECT a.first_name || ' ' || a.last_name AS full_name , b.first_name || ' ' || b.last_name AS friends_fullname 
+FROM friendship 
+JOIN user_info a 
+ON friendship.user_id1 = a.user_id
+JOIN user_info b 
+ON friendship.user_id2 = b.user_id
+WHERE a.first_name = 'Bonnie' 
+AND a.last_name = 'Hyon';  
+
 -- Find the list of friends for Merk Dion. 
 SELECT CONCAT(a.first_name, " ", a.last_name) AS user_fullname, CONCAT(b.first_name," ",  b.last_name) AS friends_fullname
 FROM friendship ship
@@ -106,6 +118,18 @@ ON b.user_id = ship.user_id2
 WHERE a.first_name = "Merk" 
 AND a.last_name = "Dion"
 AND ship.user_id1 = 5;
+
+-- Find the list of friends for Merk Dion. ** This updated version is more efficient **
+
+SELECT a.first_name || ' ' || a.last_name AS full_name , b.first_name || ' ' || b.last_name AS friends_fullname 
+FROM friendship 
+JOIN user_info a 
+ON friendship.user_id1 = a.user_id
+JOIN user_info b 
+ON friendship.user_id2 = b.user_id
+WHERE a.first_name = 'Merk' 
+AND a.last_name = 'Dion';  
+
 
 -- Which user(s) has/have made the most posts? 
 SELECT info.first_name, info.last_name, COUNT(posts.message) AS total_posts 
