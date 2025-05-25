@@ -54,3 +54,10 @@ WHERE category = "Kitchen Supplies";
 SELECT item_name, stock_quantity
 FROM superstore
 WHERE item_name = "Air Purifier";
+
+-- #5. What product category had the highest average rating? 
+
+SELECT ROUND(avg(average_rating),2) AS average_rating, category
+FROM superstore
+GROUP BY category
+ORDER BY average_rating desc;
