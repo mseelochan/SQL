@@ -41,7 +41,7 @@ LIMIT 10;
 
 -- Which artist released the longest song and how long was it?
 
-SELECT artist_name , max(duration_ms)
+SELECT artist_name , duration_ms
 FROM BIT_DB.Spotifydata
 GROUP BY artist_name
 ORDER BY duration_ms desc
